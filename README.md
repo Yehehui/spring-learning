@@ -46,3 +46,12 @@ xml:
     </bean>
 </beans>
 ```
+#### 获取集合
+``` java
+BeanFactory factory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context.xml");
+if (factory instanceof ListableBeanFactory){
+    ListableBeanFactory beanFactory= (ListableBeanFactory) factory;
+    Map<String, User> map=beanFactory.getBeansOfType(User.class);
+    System.out.println(map);
+}
+```
