@@ -55,3 +55,26 @@ if (factory instanceof ListableBeanFactory){
     System.out.println(map);
 }
 ```
+#### 根据标签获取
+定义标签：
+``` java
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Super {
+}
+```
+demo:
+``` java
+BeanFactory factory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context.xml");
+if (factory instanceof ListableBeanFactory){
+    ListableBeanFactory beanFactory= (ListableBeanFactory) factory;
+    Map<String, User> beansWithAnnotation = (Map)beanFactory.getBeansWithAnnotation(Super.class);
+    System.out.println(beansWithAnnotation);
+}
+```
+xml:
+``` xml
+<bean id="superUser" class="com.example.domain.SuperUser" parent="user" primary="true">
+    <property name="address" value="福州"/>
+</bean>
+```
