@@ -6,8 +6,8 @@
 demo:
 ``` java
 BeanFactory factory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context.xml");
-        User user = factory.getBean(User.class);
-        System.out.println(user);
+User user = factory.getBean(User.class);
+System.out.println(user);
 ```
 xml:
 ``` xml
