@@ -1,5 +1,8 @@
 package com.example.domain;
 
+import com.example.anotation.Super;
+
+@Super
 public class SuperUser extends User {
     String address;
 

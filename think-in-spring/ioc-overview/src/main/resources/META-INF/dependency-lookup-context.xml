@@ -7,6 +7,10 @@
         <property name="id" value="1"/>
         <property name="name" value="hehuiye"/>
     </bean>
-
-
+    <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+        <property name="targetBeanName" value="user"/>
+    </bean>
+    <bean id="superUser" class="com.example.domain.SuperUser" parent="user" primary="true">
+        <property name="address" value="福州"/>
+    </bean>
 </beans>
