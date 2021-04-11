@@ -23,7 +23,7 @@ xml:
 </beans>
 ```
 #### 延时获取
-使用objectFactoryCreatingFactoryBean
+使用objectFactoryCreatingFactoryBean<br/>
 demo:
 ``` java
 BeanFactory factory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context.xml");
