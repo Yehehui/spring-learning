@@ -153,3 +153,44 @@ spring为ObjectFactory自动注入了ClassPathXmlApplication
 1. 自定义bean
 2. 容器内建bean
 3. 容器内建依赖
+### ApplicationContext与BeanFactory的关系
+ApplicationContext实现了BeanFactory，扩展了更多功能
+#### BeanFactory 使用用例
+``` java
+DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
+int count = reader.loadBeanDefinitions("classpath:/META-INF/dependency-lookup-context.xml");
+if (beanFactory instanceof DefaultListableBeanFactory) {
+    Map<String, User> users = beanFactory.getBeansOfType(User.class);
+    System.out.println(users);
+}
+```
+#### ApplicationContext 使用示例
+``` java
+@Configuration
+public class ApplicationContextAsIocContainer {
+    public static void main(String[] args) {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        context.register(ApplicationContextAsIocContainer.class);
+        context.refresh();
+        getBeanCollectionByType(context);
+        context.close();
+    }
+
+    static void getBeanCollectionByType(BeanFactory beanFactory) {
+        if (beanFactory instanceof ListableBeanFactory) {
+            ListableBeanFactory factory = (ListableBeanFactory) beanFactory;
+            Map<String, User> users = factory.getBeansOfType(User.class);
+            System.out.println(users);
+        }
+    }
+
+    @Bean
+    public User getUser(){
+        User user=new User();
+        user.setId(123);
+        user.setName("test");
+        return user;
+    }
+}
+```
