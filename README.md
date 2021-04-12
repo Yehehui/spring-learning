@@ -113,3 +113,21 @@ autowire
     </bean>
 </beans>
 ```
+### 区别
+UserRepository
+``` java
+public class UserRepository {
+    Collection<User> users;
+    BeanFactory beanFactory;
+}
+```
+Demo
+``` java
+BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-inject-context.xml");
+UserRepository userRepository = (UserRepository) beanFactory.getBean("userRepository");
+System.out.println(userRepository.getBeanFactory());
+System.out.println(userRepository.getBeanFactory() == beanFactory);
+System.out.println(beanFactory.getBean(BeanFactory.class));
+```
+结果
+![](C:\Users\yehehui\Desktop\file\GitHub\spring-learning)
