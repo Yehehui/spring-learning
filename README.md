@@ -130,4 +130,21 @@ System.out.println(userRepository.getBeanFactory() == beanFactory);
 System.out.println(beanFactory.getBean(BeanFactory.class));
 ```
 结果
-![](C:\Users\yehehui\Desktop\file\GitHub\spring-learning)
+![](https://github.com/Yehehui/spring-learning/blob/master/image/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%9F%A5%E6%89%BE%E5%8C%BA%E5%88%ABdemo.png)
+依赖查找和依赖注入来源并不相同
+UserRepository
+``` java
+public class UserRepository {
+    private Collection<User> users;
+    private BeanFactory beanFactory;
+    private ObjectFactory<ApplicationContext> objectFactory;
+}
+```
+Demo
+``` java
+BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-inject-context.xml");
+UserRepository userRepository = (UserRepository) beanFactory.getBean("userRepository");
+System.out.println(userRepository.getUserObjectFactory().getObject());
+```
+结果
+spring为ObjectFactory自动注入了ClassPathXmlApplication
