@@ -149,3 +149,7 @@ System.out.println(userRepository.getUserObjectFactory().getObject());
 结果
 ![](https://github.com/Yehehui/spring-learning/blob/master/image/自动注入.png)
 spring为ObjectFactory自动注入了ClassPathXmlApplication
+### 依赖来源
+1. 自定义bean
+2. 容器内建bean
+3. 容器内建依赖
