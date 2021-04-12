@@ -1,13 +1,25 @@
 package com.example.domain;
 
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.context.ApplicationContext;
 
 import java.util.Collection;
 
 public class UserRepository {
-    Collection<User> users;
+    private Collection<User> users;
 
-    BeanFactory beanFactory;
+    private BeanFactory beanFactory;
+
+    private ObjectFactory<ApplicationContext> objectFactory;
+
+    public ObjectFactory<ApplicationContext> getUserObjectFactory() {
+        return objectFactory;
+    }
+
+    public void setUserObjectFactory(ObjectFactory<ApplicationContext> userObjectFactory) {
+        this.objectFactory = userObjectFactory;
+    }
 
     public BeanFactory getBeanFactory() {
         return beanFactory;
