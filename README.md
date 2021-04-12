@@ -130,4 +130,4 @@ System.out.println(userRepository.getBeanFactory() == beanFactory);
 System.out.println(beanFactory.getBean(BeanFactory.class));
 ```
 结果
-![](C:\Users\yehehui\Desktop\file\GitHub\spring-learning)
+![](https://github.com/Yehehui/spring-learning/blob/master/image/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%9F%A5%E6%89%BE%E5%8C%BA%E5%88%ABdemo.png)
