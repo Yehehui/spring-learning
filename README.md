@@ -147,4 +147,5 @@ UserRepository userRepository = (UserRepository) beanFactory.getBean("userReposi
 System.out.println(userRepository.getUserObjectFactory().getObject());
 ```
 结果
+![](https://github.com/Yehehui/spring-learning/blob/master/image/自动注入.png)
 spring为ObjectFactory自动注入了ClassPathXmlApplication
